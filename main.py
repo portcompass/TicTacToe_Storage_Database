@@ -34,18 +34,44 @@ def fetch_value_from_storage_grid(row_number, column_number):
 def store_value_in_storage_grid(row_number, column_number, value):
   global TICTACTOE_STORAGE_GRID
   TICTACTOE_STORAGE_GRID[row_number][column_number] = value
+
+import sys
+def print_out_storage_grid():
+  global TICTACTOE_STORAGE_GRID
+  for current_row in (0,1,2):
+    for current_col in (0,1,2):
+      sys.stdout.write('{:^10}'.format(TICTACTOE_STORAGE_GRID[current_row][current_col]))
+    print('')
+
 ######################################################################################
 
 
 # Below is David's code for testing the above functions.  
 # You don't need to bring the below code into your own program.
-# But, remember: your program must launch the initialization function before it starts using the fetch/store functions.
+# But, remember: your program must launch the initialization function before 
+# it starts using the fetch/store functions.
+
+# This is the initialization function:
 initialize_storage_grid()
+
+# Let's print out the initial empty game board just to do a "sanity check"
+print("Now I am going to print out the INITIAL (empty) status of the game board:")
+print_out_storage_grid()
+
+# Now, I'm putting two "markers" on the game board
+print("Let me put down two markers on the game board...")
 store_value_in_storage_grid(0,2, 'X')
 store_value_in_storage_grid(1,1, 'O')
-print(TICTACTOE_STORAGE_GRID)
-print(fetch_value_from_storage_grid(0,2))  # This will print "X"
-print(fetch_value_from_storage_grid(0,0))  # This will print "EMPTY"
-print(fetch_value_from_storage_grid(1,1))  # This will print "O"
 
+print("Now I am going to print out the current status of the game board:")
+print_out_storage_grid()
+
+print("Now I am going to 'fetch' the value stored at row 0, column 2:")
+print(fetch_value_from_storage_grid(0,2))  # This will print "X"
+
+print("Now I am going to 'fetch' the value stored at row 0, column 0:")
+print(fetch_value_from_storage_grid(0,0))  # This will print "EMPTY"
+
+print("Now I am going to 'fetch' the value stored at row 1, column 1:")
+print(fetch_value_from_storage_grid(1,1))  # This will print "O"
 
